@@ -1,5 +1,11 @@
+import { Link } from 'gatsby'
 import React from 'react'
-
+import Header from '../Components/Header';
+import Layout from '../Components/Layout';
 export default () => {
-    return <div>Helloworld</div>
+    return <Layout>
+        <Header text="Blog" subtext="Gatsby blog"/>
+        Helloworld
+        
+    </Layout>
 }
