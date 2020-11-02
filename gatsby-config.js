@@ -13,5 +13,6 @@ module.exports = {
                 accessToken:process.env.ContentFull_accessToken
             },
         },
+        
     ],
 }
