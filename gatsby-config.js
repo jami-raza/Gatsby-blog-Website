@@ -13,6 +13,6 @@ module.exports = {
                 accessToken:process.env.ContentFull_accessToken
             },
         },
-        
+        `gatsby-plugin-material-ui`
     ],
 }

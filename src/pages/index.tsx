@@ -6,6 +6,7 @@ export default () => {
     return <Layout>
         <Header text="Blog" subtext="Gatsby blog"/>
         Helloworld
+        <Link to="/about">About</Link>
         
     </Layout>
 }
