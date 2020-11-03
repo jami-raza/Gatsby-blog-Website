@@ -1,5 +1,5 @@
 
-exports.createPages = async function ({ actions}) {
+/*exports.createPages = async function ({ actions}) {
 
     actions.createPage({
         path: "my-dynamic-page",
@@ -25,4 +25,41 @@ exports.onCreatePage = async ({ page, actions }) => {
       // Update the page.
       createPage(page)
     }
+  }*/
+  var path = require('path');
+  exports.createPages = async ({actions,graphql}) => {
+    const {createPage} = actions;
+
+    const result = await graphql(`
+      {
+        allContentfulBlogPost {
+          nodes {
+            author
+            date
+            heading
+            image {
+              fluid {
+                src
+              }
+              description
+            }
+            content {
+              json
+            }
+          }
+        }
+      }
+    
+    `)
+    console.log(JSON.stringify(result));
+    
+    result.data.allContentfulBlogPost.nodes.forEach((obj)=>{
+      createPage({
+        path: `/blog/${obj.heading}`,
+        component: path.resolve('./src/templates/blog.tsx'),
+        context: {
+          blogDetails: obj
+        }
+      })
+    })
   }
