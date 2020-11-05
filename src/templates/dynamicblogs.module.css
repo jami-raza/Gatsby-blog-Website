@@ -1,0 +1,15 @@
+.content{
+    max-width: 500px;
+    margin: auto;
+    padding-top: 7%;
+}
+.title{
+    padding: 10px 10px 10px 10px;
+    font-variant: small-caps;
+}
+.author{
+    padding: 10px 10px 10px 10px;
+}
+.author_title{
+    color: navy;
+}

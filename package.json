@@ -24,6 +24,7 @@
     "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-source-contentful": "^3.0.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-truncate": "^2.4.0"
   }
 }

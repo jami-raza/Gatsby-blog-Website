@@ -9,10 +9,12 @@ module.exports = {
         {
             resolve:`gatsby-source-contentful`,
             options:{
-                spaceId:`jm329ken9x4x`,
+                spaceId:process.env.ContentFull_space_id,
                 accessToken:process.env.ContentFull_accessToken
             },
         },
-        `gatsby-plugin-material-ui`
+        `gatsby-plugin-material-ui`,
+        
+          
     ],
 }

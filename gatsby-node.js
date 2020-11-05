@@ -35,13 +35,14 @@ exports.onCreatePage = async ({ page, actions }) => {
         allContentfulBlogPost {
           nodes {
             author
-            date
+            date(fromNow: true)
             heading
+            slug
             image {
+              title
               fluid {
                 src
               }
-              description
             }
             content {
               json
@@ -55,11 +56,24 @@ exports.onCreatePage = async ({ page, actions }) => {
     
     result.data.allContentfulBlogPost.nodes.forEach((obj)=>{
       createPage({
-        path: `/blog/${obj.heading}`,
-        component: path.resolve('./src/templates/blog.tsx'),
+        path: `/blogs/${obj.slug}`,
+        component: path.resolve('./src/templates/dynamicblogs.tsx'),
         context: {
           blogDetails: obj
         }
       })
     })
+  }
+
+  exports.onCreatePage = async ({ page, actions }) => {
+    const { createPage } = actions
+  
+    
+    if (page.path.match(/^\/404/)) {
+
+      page.matchPath = "/404/*"
+  
+      
+      createPage(page)
+    }
   }
