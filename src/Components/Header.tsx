@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,7 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
+import {AuthContext} from '../Context/auth'
+import firebase from 'gatsby-plugin-firebase';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,6 +35,11 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function Navbar() {
+  const { user } = useContext(AuthContext)
+  const handleLogout = async () => {
+    await firebase.auth().signOut()
+    navigate('/login')
+  }
   const classes = useStyles();
 
   return (
@@ -53,7 +61,15 @@ export default function Navbar() {
           <Typography variant="subtitle1" className={classes.navigation}>
            <Link className={classes.link} to="/blogs"> Blogs</Link>
           </Typography>
-          <Button color="inherit">Login</Button>
+          {!user ? (
+          <>
+          <Link to="/Register"><Button color="inherit">Register</Button></Link>
+          <Link to="/login"><Button color="inherit">Login</Button></Link>
+          </>
+          ): (
+            <Link to="#!"><Button color="inherit" onClick={handleLogout}>Logout</Button></Link>
+          )}
+          
         </Toolbar>
       </AppBar>
     </div>
