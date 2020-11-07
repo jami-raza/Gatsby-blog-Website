@@ -63,11 +63,11 @@ export default function Navbar() {
           </Typography>
           {!user ? (
           <>
-          <Link to="/Register"><Button color="inherit">Register</Button></Link>
-          <Link to="/login"><Button color="inherit">Login</Button></Link>
+          <Link className={classes.link} to="/Register"><Button color="inherit" >Register</Button></Link>
+          <Link className={classes.link} to="/login"><Button color="inherit">Login</Button></Link>
           </>
           ): (
-            <Link to="#!"><Button color="inherit" onClick={handleLogout}>Logout</Button></Link>
+            <Link className={classes.link} to="#!"><Button color="inherit" onClick={handleLogout}>Logout</Button></Link>
           )}
           
         </Toolbar>

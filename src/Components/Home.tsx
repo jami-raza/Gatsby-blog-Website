@@ -25,7 +25,9 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'left',
       color: theme.palette.text.secondary,
       paddingBottom:20,
-      flexGrow:10
+      flexGrow:10,
+      backgroundColor:'transparent',
+      
     },
     details: {
       display: 'flex',
@@ -46,10 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
     link:{
       textDecoration:'none',
     },
-    left:{
-      position:'fixed',
-      float:'left'
-    }
+
   }),
 );
 
@@ -181,8 +180,46 @@ const Home = () => {
         </Paper>
         
       </Grid>
-      <Grid item xs={4} >
-        <Paper className={classes.paper}>xs=4</Paper>
+      <Grid item xs={4} className={Styles.sidebar}>
+      
+        <Paper className={classes.paper}>
+        <Typography component="h5" variant="h5" style={{padding:'0px 0px 10px 0px',color: "#3f51b5",}}>
+            Popular
+          </Typography>
+          <Link className={classes.link} to={`/blogs/${data.allContentfulBlogPost.nodes[4].slug}`}>
+          <Card style={{marginTop:'20px'}}>
+            <CardContent>
+            <Typography component="h6" variant="h6">
+            
+              {data.allContentfulBlogPost.nodes[4].heading}
+            
+          </Typography>
+            </CardContent>
+          </Card>
+          </Link>
+          <Link className={classes.link} to={`/blogs/${data.allContentfulBlogPost.nodes[5].slug}`}>
+          <Card style={{marginTop:'20px'}}>
+            <CardContent>
+            <Typography component="h6" variant="h6">
+            
+              {data.allContentfulBlogPost.nodes[5].heading}
+            
+          </Typography>
+            </CardContent>
+          </Card>
+          </Link>
+          <Link className={classes.link} to={`/blogs/${data.allContentfulBlogPost.nodes[2].slug}`}>
+          <Card style={{marginTop:'20px'}}>
+            <CardContent>
+            <Typography component="h6" variant="h6">
+            
+              {data.allContentfulBlogPost.nodes[2].heading}
+            
+          </Typography>
+            </CardContent>
+          </Card>
+          </Link>
+          </Paper>
       </Grid>
       
       </Grid>

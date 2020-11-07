@@ -22,18 +22,21 @@ export default function Product({pageContext}){
             <h1 className={Styles.title}>{blogDetails.heading}</h1>
             <p className={Styles.author}>Written by <span className={Styles.author_title}>{blogDetails.author}</span></p>
             <p className={Styles.author}>Updated <span className={Styles.author_title}>{blogDetails.date}</span></p>
-            <img src={blogDetails.image.fluid.src}/>
+            <img className={Styles.img} src={blogDetails.image.fluid.src}/>
+            <br/>
             {!user  ?  ( <Truncate
             lines={10}
             >
-            <p className={Styles.content}>{documentToReactComponents(blogDetails.content.json)}</p>
+            <div className={Styles.boxbottomshadow }><p className={Styles.content}>{documentToReactComponents(blogDetails.content.json)}</p></div>
             
             </Truncate> 
             
             ) : (
                 <p className={Styles.content}>{documentToReactComponents(blogDetails.content.json)}</p>
             )}
-            {!user ? <button onClick={handleChange}> Read more </button> :null }
+            <br/>
+            <br/>
+            {!user ? <button onClick={handleChange}> Read More </button> :null }
             
         </Layout>
     )
