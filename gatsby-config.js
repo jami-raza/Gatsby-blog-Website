@@ -10,7 +10,7 @@ module.exports = {
             resolve:`gatsby-source-contentful`,
             options:{
                 spaceId:process.env.ContentFull_space_id,
-                accessToken:process.env.ContentFull_accessToken
+                accessToken:process.env.ContentFull_accessToken,
             },
         },
         `gatsby-plugin-material-ui`,
